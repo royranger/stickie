@@ -1,0 +1,9 @@
+#registerbox {
+  text-align: left;
+  /* border: 2px solid black; */
+}
+
+input {
+  padding: 6px;
+  margin-top: 5px;
+}

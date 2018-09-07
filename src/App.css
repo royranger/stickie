@@ -11,7 +11,7 @@
 
 }
 
- #head {
+ #head, #foot {
    background:
    radial-gradient(black 15%, transparent 16%) 0 0,
    radial-gradient(black 15%, transparent 16%) 8px 8px,
@@ -32,4 +32,12 @@
    font-family: 'Gochi Hand', cursive;
    font-size: 30px;
    color: white;
+ }
+
+ #foot p {
+   margin: 0;
+   text-align: right;
+   padding: 20px;
+   color: #859082;
+   font-size: 60%;
  }

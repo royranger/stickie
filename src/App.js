@@ -34,6 +34,10 @@ class App extends Component {
             <Board/>
            </div>)
           }
+
+        <div id="foot">
+          <p>made by royranger</p>
+        </div>
       </div>
     );
   }
