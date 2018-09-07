@@ -1,3 +1,35 @@
 .App {
   text-align: center;
 }
+
+@font-face {
+    font-family: 'moonshotregular';
+    src: url('moonshot-regular-webfont.woff2') format('woff2'),
+         url('moonshot-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+ #head {
+   background:
+   radial-gradient(black 15%, transparent 16%) 0 0,
+   radial-gradient(black 15%, transparent 16%) 8px 8px,
+   radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+   radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+   background-color:#282828;
+   background-size:16px 16px;
+ }
+
+ #title {
+   font-family: 'moonshotregular', 'Permanent Marker', cursive;
+   font-size: 50px;
+   color: #FFFE84;
+
+ }
+
+ #slogan {
+   font-family: 'Gochi Hand', cursive;
+   font-size: 30px;
+   color: white;
+ }
