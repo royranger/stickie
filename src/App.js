@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import Stickie from './components/Stickie';
+import Board from './components/Board/Board';
 import Register from './components/Register/Register';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      route: 'register',
+      route: 'board',
 
     }
   }
@@ -29,10 +29,10 @@ class App extends Component {
           </div>) : route === 'signin' ?
           (<div>
             <h1>Signin here</h1>
-        </div>) :
+           </div>) :
           (<div>
-            <Stickie/>
-        </div>)
+            <Board/>
+           </div>)
           }
       </div>
     );
