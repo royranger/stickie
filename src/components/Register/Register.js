@@ -3,7 +3,13 @@ import './Register.css';
 
 class Register extends Component {
 
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+    const {routeSignIn} = this.props;
+
     return(
       <div className="flex flex-wrap items-center">
         <div className="tc w-100 w-50-ns">
@@ -17,7 +23,8 @@ class Register extends Component {
               <label>Password</label><br/>
               <input/><br/><br/>
                 <div className="pointer f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib hot-pink">Create board</div>
-                <p>Already have a board? <span className="hot-pink underline pointer">Sign in here</span></p>
+                <p>Already have a board? <span className="hot-pink underline pointer"
+                                                onClick={routeSignIn}>Sign in here</span></p>
             </div>
           </div>
         </div>

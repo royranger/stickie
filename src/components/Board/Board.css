@@ -2,3 +2,8 @@
   background-image: url(cork.jpg);
   background-repeat: repeat;
 }
+
+textarea {
+  height: 150px;
+  max-width: 100%;
+}

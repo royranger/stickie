@@ -12,6 +12,18 @@ class App extends Component {
     }
   }
 
+  routeSignIn = () => {
+    this.setState({
+      route: 'signin'
+    });
+  }
+
+  routeRegister = () => {
+    this.setState({
+      route: 'register'
+    });
+  }
+
   render() {
 
     const {route} = this.state;
@@ -25,13 +37,13 @@ class App extends Component {
 
         {route === 'register' ?
           (<div>
-            <Register/>
+            <Register routeSignIn = {this.routeSignIn}/>
           </div>) : route === 'signin' ?
           (<div>
             <h1>Signin here</h1>
            </div>) :
           (<div>
-            <Board/>
+            <Board routeRegister = {this.routeRegister}/>
            </div>)
           }
 
