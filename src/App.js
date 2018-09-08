@@ -8,8 +8,53 @@ class App extends Component {
     super(props);
     this.state = {
       route: 'board',
+      user: {
+        id: "",
+        name: "",
+        username: "",
+        notes: []
+      }
 
     }
+  }
+
+  loadUser = (user) => {
+    this.setState({
+      user: {
+        id: user.id,
+        name: user.name,
+        username: user.username,
+        notes: []
+      }
+    })
+  }
+
+  clearUser = () => {
+    this.setState({
+      route: 'register',
+      user: {
+        id: "",
+        name: "",
+        username: "",
+        notes: []
+      }
+    });
+  }
+
+  getUserNotes = (username) => {
+    fetch('http://localhost:3001/board', {
+      method: 'post',
+      headers: {'Content-Type': 'Application/json'},
+      body: JSON.stringify({
+        username: username
+      })
+    })
+    .then(response=> response.json())
+    .then(notesArray => {
+      this.setState({
+        user: Object.assign(this.state.user, {notes: notesArray})
+      });
+    })
   }
 
   routeSignIn = () => {
@@ -21,6 +66,12 @@ class App extends Component {
   routeRegister = () => {
     this.setState({
       route: 'register'
+    });
+  }
+
+  routeBoard = () => {
+    this.setState({
+      route: 'board'
     });
   }
 
@@ -37,14 +88,23 @@ class App extends Component {
 
         {route === 'register' ?
           (<div>
-            <Register routeSignIn = {this.routeSignIn}/>
+            <Register routeSignIn = {this.routeSignIn}
+                      routeBoard={this.routeBoard}
+                      loadUser={this.loadUser}
+                      getUserNotes={this.getUserNotes}/>
           </div>) : route === 'signin' ?
           (<div>
             <h1>Signin here</h1>
-           </div>) :
+          </div>) : route === 'board' ?
           (<div>
-            <Board routeRegister = {this.routeRegister}/>
-           </div>)
+            <Board user={this.state.user}
+                   routeRegister={this.routeRegister}
+                   getUserNotes={this.getUserNotes}
+                   clearUser={this.clearUser}/>
+          </div>) :
+          (<div>
+            <h1>Error screen</h1>
+          </div>)
           }
 
         <div id="foot">

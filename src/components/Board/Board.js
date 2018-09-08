@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import App from '../../App';
 import Stickie from '../Stickie';
 import './Board.css';
 import Popup from "reactjs-popup";
@@ -17,9 +18,15 @@ class Board extends Component {
     });
   }
 
+  onSignOut = () => {
+    const {clearUser, routeRegister} = this.props;
+    routeRegister();
+    clearUser();
+  }
+
   render() {
     const height = window.innerHeight-124;
-    const {routeRegister} = this.props;
+    const {routeRegister, user} = this.props;
 
     return(
       <div id="board" style = {{minHeight: `${height}px`}}>
@@ -39,7 +46,7 @@ class Board extends Component {
               </span>
           </Popup>
           <div className="f6 link dim br1 ph3 pv2 mb2 dib white bg-hot-pink pointer ma2"
-                onClick={routeRegister}>Sign out</div>
+                onClick={this.onSignOut}>Sign out</div>
         </div>
         <div>
           <Stickie/>
