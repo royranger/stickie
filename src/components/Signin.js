@@ -23,23 +23,48 @@ class Signin extends Component {
 
   onSubmitSignin = () => {
     const {loadUser, getUserNotes, routeBoard} = this.props;
+    const {signinUsername, signinPassword} = this.state;
     // fetch user from server
-    // loadUser
-    // getUserNotes
-    // routeBoard
+    fetch('http://localhost:3001/signin', {
+      'method': 'post',
+      'headers': {'Content-Type': 'application/json'},
+      'body': JSON.stringify({
+        username: signinUsername,
+        password: signinPassword
+      })
+    })
+      .then(response=> response.json())
+      .then(user=> {
+        if(user.id) {
+          loadUser(user);
+          getUserNotes(user.id);
+          routeBoard();
+        } else {
+          window.alert('Your credentials are incorrect. Please try again.');
+        }
+      })
   }
+
+  handleEnter = (event) => {
+    if (event.key === "Enter") {
+      this.onSubmitSignin();
+    }
+  }
+
 
   render() {
     return(
       <div className="tc">
         <label>Username</label><br/>
         <input type="text"
-               onChange={this.onUsernameChange}/><br/><br/>
+               onChange={this.onUsernameChange}
+               onKeyPress={this.handleEnter}/><br/><br/>
         <label>Password</label><br/>
         <input type="Password"
-               onChange={this.onPasswordChange}/><br/><br/>
+               onChange={this.onPasswordChange}
+               onKeyPress={this.handleEnter}/><br/><br/>
         <div className="pointer f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib hot-pink"
-                        >Sign in</div>
+              onClick={this.onSubmitSignin}>Sign in</div>
       </div>
     )
   }

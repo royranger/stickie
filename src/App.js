@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Board from './components/Board/Board';
 import Register from './components/Register/Register';
-import Signin from './components/Signin';
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +12,7 @@ class App extends Component {
         id: "",
         name: "",
         username: "",
-        notes: [{id: 1, content: "hello, I am Stickie 1", username:"jane"}, {id: 2, content: "I am Stickie 2", username: "jane"}]
+        notes: []
       }
 
     }
@@ -58,12 +57,6 @@ class App extends Component {
     })
   }
 
-  routeSignIn = () => {
-    this.setState({
-      route: 'signin'
-    });
-  }
-
   routeRegister = () => {
     this.setState({
       route: 'register'
@@ -93,9 +86,6 @@ class App extends Component {
                       routeBoard={this.routeBoard}
                       loadUser={this.loadUser}
                       getUserNotes={this.getUserNotes}/>
-          </div>) : route === 'signin' ?
-          (<div>
-            <Signin/>
           </div>) : route === 'board' ?
           (<div>
             <Board user={this.state.user}

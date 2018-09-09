@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import App from '../../App';
 import StickieList from '../StickieList';
 import './Board.css';
 import Popup from "reactjs-popup";
@@ -60,7 +59,7 @@ class Board extends Component {
 
   render() {
     const height = window.innerHeight-124;
-    const {routeRegister, user} = this.props;
+    const {user} = this.props;
 
     return(
       <div id="board" style = {{minHeight: `${height}px`}}>
