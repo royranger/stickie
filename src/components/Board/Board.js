@@ -18,6 +18,36 @@ class Board extends Component {
     });
   }
 
+  stickNote = () => {
+    const {newNote} = this.state;
+    const {username} = this.props.user;
+
+    fetch('http://localhost:3001/boardnewstickie', {
+      'method': 'post',
+      'headers': {'Content-Type': 'application/json'},
+      'body': JSON.stringify({
+        username: username,
+        newnote: newNote
+      })
+    })
+    .then(response => response.json())
+    .then(note => {
+      if (note.id) {
+        window.alert('Your stickie was created successfully!');
+        this.clearNewNote();
+      } else {
+        window.alert('Oops, something went wrong. Please try again.');
+      }
+    })
+
+  }
+
+  clearNewNote = () => {
+    this.setState({
+      newNote: ""
+    });
+  }
+
   onSignOut = () => {
     const {clearUser, routeRegister} = this.props;
     routeRegister();
@@ -38,10 +68,11 @@ class Board extends Component {
             closeOnDocumentClick
             >
               <span>
-                <textarea onChange={this.getNote}></textarea>
+                <textarea onChange={this.getNote}
+                          value={this.state.newNote}></textarea>
                 <br/><br/>
                 <div className="pointer f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib hot-pink"
-                      >Stick it up!</div>
+                      onClick={this.stickNote}>Stick it up!</div>
 
               </span>
           </Popup>
