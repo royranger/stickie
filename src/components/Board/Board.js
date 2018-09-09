@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import App from '../../App';
-import Stickie from '../Stickie';
+import StickieList from '../StickieList';
 import './Board.css';
 import Popup from "reactjs-popup";
 
@@ -21,6 +21,7 @@ class Board extends Component {
   stickNote = () => {
     const {newNote} = this.state;
     const {username} = this.props.user;
+    const {getUserNotes} = this.props;
 
     fetch('http://localhost:3001/boardnewstickie', {
       'method': 'post',
@@ -33,8 +34,9 @@ class Board extends Component {
     .then(response => response.json())
     .then(note => {
       if (note.id) {
+        getUserNotes(note.username);
         window.alert('Your stickie was created successfully!');
-        this.clearNewNote();
+        this.clearNewNote();        
       } else {
         window.alert('Oops, something went wrong. Please try again.');
       }
@@ -53,6 +55,7 @@ class Board extends Component {
     routeRegister();
     clearUser();
   }
+
 
   render() {
     const height = window.innerHeight-124;
@@ -80,9 +83,7 @@ class Board extends Component {
                 onClick={this.onSignOut}>Sign out</div>
         </div>
         <div>
-          <Stickie/>
-          <Stickie/>
-          <Stickie/>
+          <StickieList notes={user.notes}/>
         </div>
 
       </div>

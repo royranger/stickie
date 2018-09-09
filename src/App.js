@@ -12,7 +12,7 @@ class App extends Component {
         id: "",
         name: "",
         username: "",
-        notes: []
+        notes: [{id: 1, content: "hello, I am Stickie 1", username:"jane"}, {id: 2, content: "I am Stickie 2", username: "jane"}, {id: 3, content: "I will not define myself by stickiness", username: "jane"}]
       }
 
     }
