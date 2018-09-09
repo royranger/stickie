@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import './App.css';
 import Board from './components/Board/Board';
 import Register from './components/Register/Register';
+import Signin from './components/Signin';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      route: 'board',
+      route: 'register',
       user: {
         id: "",
         name: "",
         username: "",
-        notes: [{id: 1, content: "hello, I am Stickie 1", username:"jane"}, {id: 2, content: "I am Stickie 2", username: "jane"}, {id: 3, content: "I will not define myself by stickiness", username: "jane"}]
+        notes: [{id: 1, content: "hello, I am Stickie 1", username:"jane"}, {id: 2, content: "I am Stickie 2", username: "jane"}]
       }
 
     }
@@ -41,12 +42,12 @@ class App extends Component {
     });
   }
 
-  getUserNotes = (username) => {
+  getUserNotes = (userid) => {
     fetch('http://localhost:3001/board', {
       method: 'post',
       headers: {'Content-Type': 'Application/json'},
       body: JSON.stringify({
-        username: username
+        userid: userid
       })
     })
     .then(response=> response.json())
@@ -94,7 +95,7 @@ class App extends Component {
                       getUserNotes={this.getUserNotes}/>
           </div>) : route === 'signin' ?
           (<div>
-            <h1>Signin here</h1>
+            <Signin/>
           </div>) : route === 'board' ?
           (<div>
             <Board user={this.state.user}

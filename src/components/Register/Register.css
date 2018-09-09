@@ -6,4 +6,5 @@
 input {
   padding: 6px;
   margin-top: 5px;
+  max-width: 100%;
 }

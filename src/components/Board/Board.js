@@ -20,13 +20,14 @@ class Board extends Component {
 
   stickNote = () => {
     const {newNote} = this.state;
-    const {username} = this.props.user;
+    const {username, id} = this.props.user;
     const {getUserNotes} = this.props;
 
     fetch('http://localhost:3001/boardnewstickie', {
       'method': 'post',
       'headers': {'Content-Type': 'application/json'},
       'body': JSON.stringify({
+        userid: id,
         username: username,
         newnote: newNote
       })
@@ -34,9 +35,9 @@ class Board extends Component {
     .then(response => response.json())
     .then(note => {
       if (note.id) {
-        getUserNotes(note.username);
+        getUserNotes(note.userid);
         window.alert('Your stickie was created successfully!');
-        this.clearNewNote();        
+        this.clearNewNote();
       } else {
         window.alert('Oops, something went wrong. Please try again.');
       }

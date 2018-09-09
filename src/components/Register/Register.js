@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import './Register.css';
+import Popup from "reactjs-popup";
+import Signin from '../Signin';
+
 
 class Register extends Component {
 
@@ -65,7 +68,7 @@ class Register extends Component {
 
 
   render() {
-    const {routeSignIn} = this.props;
+    const {routeBoard, loadUser, getUserNotes} = this.props;
 
     return(
       <div className="flex flex-wrap items-center">
@@ -83,9 +86,16 @@ class Register extends Component {
               <input type="password" onChange={this.onPasswordChange}
                                       onKeyPress={this.handleEnter}/><br/><br/>
                 <div className="pointer f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib hot-pink"
-                                onClick={this.onSubmitRegister}>Create board</div>
-                <p>Already have a board? <span className="hot-pink underline pointer"
-                                                onClick={routeSignIn}>Sign in here</span></p>
+                                onClick={this.onSubmitRegister}>Create board</div><br/><br/>
+                <span>Already have a board?  </span><Popup
+    trigger={<span className="dib f6 hot-pink underline pointer"> Sign in here </span>}
+    modal
+    closeOnDocumentClick
+  >
+    <Signin routeBoard={routeBoard}
+            loadUser={loadUser}
+            getUserNotes={getUserNotes}/>
+  </Popup>
             </div>
           </div>
         </div>
