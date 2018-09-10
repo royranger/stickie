@@ -50,6 +50,30 @@ class Board extends Component {
     });
   }
 
+  deleteNote = (noteid, userid) => {
+    const {getUserNotes} = this.props;
+    const confirmDelete = window.confirm("Are you sure you want to delete this stickie?");
+
+    if (confirmDelete) {
+      fetch('http://localhost:3001/boarddelete', {
+        'method': 'put',
+        'headers': {'Content-Type': 'application/json'},
+        'body' : JSON.stringify({
+          noteid: noteid
+        })
+      })
+      .then(response=> response.json())
+      .then(data=> {
+        if(data) {
+          getUserNotes(userid);
+        }
+      })
+
+    } else {
+      return;
+    }
+  }
+
   onSignOut = () => {
     const {clearUser, routeRegister} = this.props;
     routeRegister();
@@ -83,7 +107,8 @@ class Board extends Component {
                 onClick={this.onSignOut}>Sign out</div>
         </div>
         <div>
-          <StickieList notes={user.notes}/>
+          <StickieList notes={user.notes}
+                       deleteNote={this.deleteNote}  />
         </div>
 
       </div>

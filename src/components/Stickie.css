@@ -1,0 +1,36 @@
+/* #stickie {
+  cursor: grab;
+}
+
+#stickie:active {
+  cursor: grabbing;
+} */
+
+#delete {
+  padding-top: 7px;
+	padding-right: 7px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: none;
+}
+
+#stickie:hover #delete {
+  display: block;
+  cursor: pointer;
+}
+
+
+#edit {
+  padding-top: 7px;
+	padding-left: 7px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: none;
+}
+
+#stickie:hover #edit {
+  display: block;
+  cursor: pointer;
+}
