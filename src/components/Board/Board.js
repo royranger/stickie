@@ -74,6 +74,32 @@ class Board extends Component {
     }
   }
 
+  editNote = (noteid, userid) => {
+    const {getUserNotes} = this.props;
+    const {newNote} = this.state;
+
+    if(newNote) {
+      fetch('http://localhost:3001/boardedit', {
+        'method': 'put',
+        'headers': {'Content-Type': 'application/json'},
+        'body': JSON.stringify({
+          noteid: noteid,
+          newnote: newNote
+        })
+      })
+      .then(response=> response.json())
+      .then(note=> {
+        if(note.id) {
+          getUserNotes(userid);
+          window.alert("Your stickie was updated successfully!");
+          this.clearNewNote();
+        } else {
+          window.alert('Oops, something went wrong.');
+        }
+      })
+    }
+  }
+
   onSignOut = () => {
     const {clearUser, routeRegister} = this.props;
     routeRegister();
@@ -108,7 +134,10 @@ class Board extends Component {
         </div>
         <div>
           <StickieList notes={user.notes}
-                       deleteNote={this.deleteNote}  />
+                       deleteNote={this.deleteNote}
+                       getNote={this.getNote}
+                       newNote={this.state.newNote}
+                       editNote={this.editNote}/>
         </div>
 
       </div>

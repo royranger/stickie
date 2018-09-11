@@ -1,7 +1,7 @@
 import React from 'react';
 import Stickie from './Stickie';
 
-const StickieList = ({notes, deleteNote}) => {
+const StickieList = ({notes, deleteNote, getNote, newNote, editNote}) => {
 
   return(
     <div>
@@ -13,7 +13,10 @@ const StickieList = ({notes, deleteNote}) => {
                 id={note.id}
                 userid={note.userid}
                 key={note.id}
-                deleteNote={deleteNote}/>
+                deleteNote={deleteNote}
+                getNote={getNote}
+                newNote={newNote}
+                editNote={editNote}/>
           )
 
        })
