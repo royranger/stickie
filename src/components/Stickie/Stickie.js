@@ -7,7 +7,7 @@ import {faTrash, faEdit} from '@fortawesome/free-solid-svg-icons';
 
 library.add(faTrash, faEdit);
 
-const Stickie = ({content, id, userid, deleteNote, getNote, newNote, editNote}) => {
+const Stickie = ({content, id, userid, deleteNote, getNote, editNote}) => {
 
   return(
             <div className="relative bg-light-yellow mid-gray dib pa3 ma3 shadow-3 br4 br--right br--bottom"
