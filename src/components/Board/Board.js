@@ -107,7 +107,7 @@ class Board extends Component {
 
 
   render() {
-    const height = window.innerHeight-124;
+    const height = window.innerHeight-199;
     const {user, routeProfile, onSignOut} = this.props;
 
     return(
