@@ -1,10 +1,7 @@
-/* #stickie {
-  cursor: grab;
+#stickie {
+  max-width: 200px;
 }
 
-#stickie:active {
-  cursor: grabbing;
-} */
 
 #delete {
   padding-top: 7px;

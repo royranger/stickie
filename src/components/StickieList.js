@@ -1,5 +1,5 @@
 import React from 'react';
-import Stickie from './Stickie';
+import Stickie from './Stickie/Stickie';
 
 const StickieList = ({notes, deleteNote, getNote, newNote, editNote}) => {
 

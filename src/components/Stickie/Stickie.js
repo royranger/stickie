@@ -1,5 +1,4 @@
 import React from 'react';
-import Draggable from 'react-draggable';
 import Popup from "reactjs-popup";
 import './Stickie.css';
 import {library} from '@fortawesome/fontawesome-svg-core';
@@ -9,19 +8,8 @@ import {faTrash, faEdit} from '@fortawesome/free-solid-svg-icons';
 library.add(faTrash, faEdit);
 
 const Stickie = ({content, id, userid, deleteNote, getNote, newNote, editNote}) => {
-  let trueOrFalse = false;
-
-
-  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-    trueOrFalse = true;
-  }
-
-
 
   return(
-      // <Draggable
-      //     bounds='body'
-      //     disabled={trueOrFalse}>
             <div className="relative bg-light-yellow mid-gray dib pa3 ma3 shadow-3 br4 br--right br--bottom"
                   id="stickie">
                   <FontAwesomeIcon icon="trash"
@@ -50,7 +38,6 @@ const Stickie = ({content, id, userid, deleteNote, getNote, newNote, editNote}) 
                         <p id="content">{content}</p>
 
             </div>
-       // </Draggable>
   );
 
 

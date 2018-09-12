@@ -71,7 +71,7 @@ class Register extends Component {
     const {routeBoard, loadUser, getUserNotes} = this.props;
 
     return(
-      <div className="flex flex-wrap items-center">
+      <div className="flex flex-wrap items-center" id="register">
         <div className="tc w-100 w-50-ns">
           <h1>Create your board now!</h1>
           <div id="registerbox" className="ma3 pa3 ba b--yellow shadow-4">
@@ -100,7 +100,7 @@ class Register extends Component {
           </div>
         </div>
         <div className="w-100 w-50-ns h-50 pa3">
-          <img  alt="horse" src={require ('./horse.png')}/>
+          <img alt="horse" src={require ('./horse.png')}/>
         </div>
       </div>
     );

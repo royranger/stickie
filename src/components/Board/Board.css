@@ -3,6 +3,11 @@
   background-repeat: repeat;
 }
 
+#boardtabs {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
 textarea {
   height: 150px;
   max-width: 100%;

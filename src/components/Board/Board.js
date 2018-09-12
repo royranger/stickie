@@ -20,7 +20,7 @@ class Board extends Component {
   stickNote = () => {
     const {newNote} = this.state;
     const {username, id} = this.props.user;
-    const {getUserNotes} = this.props;
+    const {getUserNotes, updateNoteCount} = this.props;
 
     fetch('http://localhost:3001/boardnewstickie', {
       'method': 'post',
@@ -37,12 +37,13 @@ class Board extends Component {
         getUserNotes(note.userid);
         window.alert('Your stickie was created successfully!');
         this.clearNewNote();
+        updateNoteCount();
       } else {
         window.alert('Oops, something went wrong. Please try again.');
       }
     })
-
   }
+
 
   clearNewNote = () => {
     this.setState({
@@ -100,20 +101,20 @@ class Board extends Component {
     }
   }
 
-  onSignOut = () => {
-    const {clearUser, routeRegister} = this.props;
-    routeRegister();
-    clearUser();
-  }
+
+
+
 
 
   render() {
     const height = window.innerHeight-124;
-    const {user} = this.props;
+    const {user, routeProfile, onSignOut} = this.props;
 
     return(
       <div id="board" style = {{minHeight: `${height}px`}}>
-        <div className="flex justify-between">
+        <div className="flex justify-between" id="boardtabs">
+          <div className="f6 link dim br1 ph3 pv2 mb2 dib white bg-hot-pink pointer ma2"
+                onClick={routeProfile}>User Profile</div>
           <Popup
             trigger={<div className="ma2 pointer f6 grow no-underline br-pill ph3 pv2 mb2 dib white bg-hot-pink"
                       >Create new stickie!</div>}
@@ -130,7 +131,7 @@ class Board extends Component {
               </span>
           </Popup>
           <div className="f6 link dim br1 ph3 pv2 mb2 dib white bg-hot-pink pointer ma2"
-                onClick={this.onSignOut}>Sign out</div>
+                onClick={onSignOut}>Sign out</div>
         </div>
         <div>
           <StickieList notes={user.notes}
