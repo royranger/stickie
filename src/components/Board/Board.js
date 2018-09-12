@@ -19,7 +19,7 @@ class Board extends Component {
 
   stickNote = () => {
     const {newNote} = this.state;
-    const {username, id} = this.props.user;
+    const {id} = this.props.user;
     const {getUserNotes, updateNoteCount} = this.props;
 
     fetch('http://localhost:3001/boardnewstickie', {
@@ -27,7 +27,6 @@ class Board extends Component {
       'headers': {'Content-Type': 'application/json'},
       'body': JSON.stringify({
         userid: id,
-        username: username,
         newnote: newNote
       })
     })
