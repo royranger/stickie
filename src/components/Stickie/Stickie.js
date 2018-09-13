@@ -11,7 +11,8 @@ const Stickie = ({content, id, userid, deleteNote, getNote, editNote}) => {
 
   return(
             <div className="relative bg-light-yellow mid-gray dib pa3 ma3 shadow-3 br4 br--right br--bottom"
-                  id="stickie">
+                  id="stickie"
+                  >
                   <FontAwesomeIcon icon="trash"
                                      id="delete"
                                      className="grow"
