@@ -13,7 +13,7 @@
 	display: none;
 }
 
-#stickie:hover #delete, stickie:active #delete {
+#stickie:hover #delete, #stickie:active #delete {
   display: block;
   cursor: pointer;
 }
@@ -28,7 +28,7 @@
 	display: none;
 }
 
-#stickie:hover #edit, stickie:active #edit {
+#stickie:hover #edit, #stickie:active #edit {
   display: block;
   cursor: pointer;
 }
