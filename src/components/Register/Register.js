@@ -38,9 +38,9 @@ class Register extends Component {
     const {registerName, registerUsername, registerPassword} = this.state;
 
     fetch('https://stickie-api.herokuapp.com/register', {
-      method: 'post',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
+      'method': 'post',
+      'headers': {'Content-Type': 'application/json'},
+      'body': JSON.stringify({
         name: registerName,
         username: registerUsername,
         password: registerPassword
