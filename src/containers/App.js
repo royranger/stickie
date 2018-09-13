@@ -51,9 +51,9 @@ class App extends Component {
     const {id} = this.state.user;
 
     fetch('https://stickie-api.herokuapp.com/boardnotecount', {
-      'method': 'put',
-      'headers': {'Content-Type': 'application/json'},
-      'body': JSON.stringify({
+      method: 'put',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
         id: id
       })
     })

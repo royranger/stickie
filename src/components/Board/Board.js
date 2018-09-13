@@ -23,9 +23,9 @@ class Board extends Component {
     const {getUserNotes, updateNoteCount} = this.props;
 
     fetch('https://stickie-api.herokuapp.com/boardnewstickie', {
-      'method': 'post',
-      'headers': {'Content-Type': 'application/json'},
-      'body': JSON.stringify({
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
         userid: id,
         newnote: newNote
       })
@@ -56,9 +56,9 @@ class Board extends Component {
 
     if (confirmDelete) {
       fetch('https://stickie-api.herokuapp.com/boarddelete', {
-        'method': 'put',
-        'headers': {'Content-Type': 'application/json'},
-        'body' : JSON.stringify({
+        method: 'put',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
           noteid: noteid
         })
       })
@@ -80,9 +80,9 @@ class Board extends Component {
 
     if(newNote) {
       fetch('https://stickie-api.herokuapp.com/boardedit', {
-        'method': 'put',
-        'headers': {'Content-Type': 'application/json'},
-        'body': JSON.stringify({
+        method: 'put',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
           noteid: noteid,
           newnote: newNote
         })

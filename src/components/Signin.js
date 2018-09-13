@@ -26,9 +26,9 @@ class Signin extends Component {
     const {signinUsername, signinPassword} = this.state;
 
     fetch('https://stickie-api.herokuapp.com/signin', {
-      'method': 'post',
-      'headers': {'Content-Type': 'application/json'},
-      'body': JSON.stringify({
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
         username: signinUsername,
         password: signinPassword
       })
