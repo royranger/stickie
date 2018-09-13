@@ -50,7 +50,7 @@ class App extends Component {
   updateNoteCount = () => {
     const {id} = this.state.user;
 
-    fetch('http://localhost:3001/boardnotecount', {
+    fetch('https://stickie-api.herokuapp.com/boardnotecount', {
       'method': 'put',
       'headers': {'Content-Type': 'application/json'},
       'body': JSON.stringify({
@@ -66,7 +66,7 @@ class App extends Component {
   }
 
   getUserNotes = (userid) => {
-    fetch('http://localhost:3001/board', {
+    fetch('https://stickie-api.herokuapp.com/board', {
       method: 'post',
       headers: {'Content-Type': 'Application/json'},
       body: JSON.stringify({

@@ -24,8 +24,8 @@ class Signin extends Component {
   onSubmitSignin = () => {
     const {loadUser, getUserNotes, routeBoard} = this.props;
     const {signinUsername, signinPassword} = this.state;
-    // fetch user from server
-    fetch('http://localhost:3001/signin', {
+
+    fetch('https://stickie-api.herokuapp.com/signin', {
       'method': 'post',
       'headers': {'Content-Type': 'application/json'},
       'body': JSON.stringify({
