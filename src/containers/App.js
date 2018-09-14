@@ -3,12 +3,14 @@ import './App.css';
 import Board from '../components/Board/Board';
 import Register from '../components/Register/Register';
 import Profile from '../components/Profile/Profile';
+import Loadable from 'react-loading-overlay';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       route: 'register',
+      loading: false,
       user: {
         id: "",
         name: "",
@@ -36,6 +38,7 @@ class App extends Component {
   clearUser = () => {
     this.setState({
       route: 'register',
+      loading: false,
       user: {
         id: "",
         name: "",
@@ -104,10 +107,31 @@ class App extends Component {
     this.clearUser();
   }
 
+  // isActive = () => {
+  //   const {loading} = this.state;
+  //   if (loading) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
+
+  setLoadingTrue = () => {
+    this.setState({
+      loading: true
+    });
+  }
+
+  setLoadingFalse = () => {
+    this.setState({
+      loading: false
+    });
+  }
+
 
   render() {
 
-    const {route, user} = this.state;
+    const {route, user, loading} = this.state;
 
     return (
       <div id="app">
@@ -119,17 +143,25 @@ class App extends Component {
 
         {route === 'register' ?
           (
-            <Register routeSignIn = {this.routeSignIn}
-                      routeBoard={this.routeBoard}
-                      loadUser={this.loadUser}
-                      getUserNotes={this.getUserNotes}/>
+            <Loadable active={loading}
+                      text='Registering...'
+                      spinner>
+              <Register routeSignIn = {this.routeSignIn}
+                        routeBoard={this.routeBoard}
+                        loadUser={this.loadUser}
+                        getUserNotes={this.getUserNotes}
+                        setLoadingTrue={this.setLoadingTrue}
+                        loading={loading}/>
+            </Loadable>
+
           ) : route === 'board' ?
           (
             <Board user={user}
                    routeProfile={this.routeProfile}
                    getUserNotes={this.getUserNotes}
                    updateNoteCount={this.updateNoteCount}
-                   onSignOut={this.onSignOut}/>
+                   onSignOut={this.onSignOut}
+                   setLoadingFalse={this.setLoadingFalse}/>
           ) : route === 'profile' ?
           (
             <Profile user={user}

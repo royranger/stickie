@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './Register.css';
 import Popup from "reactjs-popup";
 import Signin from '../Signin';
+import Loadable from 'react-loading-overlay';
 
 
 class Register extends Component {
@@ -34,8 +35,10 @@ class Register extends Component {
   }
 
   onSubmitRegister = () => {
-    const {loadUser, routeBoard} = this.props;
+    const {loadUser, routeBoard, setLoadingTrue} = this.props;
     const {registerName, registerUsername, registerPassword} = this.state;
+
+    setLoadingTrue();
 
     fetch('https://stickie-api.herokuapp.com/register', {
       method: 'post',
@@ -68,7 +71,7 @@ class Register extends Component {
 
 
   render() {
-    const {routeBoard, loadUser, getUserNotes} = this.props;
+    const {routeBoard, loadUser, getUserNotes, setLoadingTrue, loading} = this.props;
 
     return(
       <div className="flex flex-wrap items-center" id="register">
@@ -92,9 +95,15 @@ class Register extends Component {
     modal
     closeOnDocumentClick
   >
-    <Signin routeBoard={routeBoard}
-            loadUser={loadUser}
-            getUserNotes={getUserNotes}/>
+    <Loadable active={loading}
+              text={"Signing in..."}
+              spinner>
+      <Signin routeBoard={routeBoard}
+              loadUser={loadUser}
+              getUserNotes={getUserNotes}
+              setLoadingTrue={setLoadingTrue}/>
+    </Loadable>
+
   </Popup>
             </div>
           </div>

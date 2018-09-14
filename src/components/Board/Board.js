@@ -11,6 +11,11 @@ class Board extends Component {
     }
   }
 
+  componentDidMount () {
+    const {setLoadingFalse} = this.props;
+    setLoadingFalse();
+  }
+
   getNote = (event) => {
     this.setState({
       newNote: event.target.value
