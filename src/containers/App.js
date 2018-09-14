@@ -107,15 +107,6 @@ class App extends Component {
     this.clearUser();
   }
 
-  // isActive = () => {
-  //   const {loading} = this.state;
-  //   if (loading) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-
   setLoadingTrue = () => {
     this.setState({
       loading: true
@@ -151,6 +142,7 @@ class App extends Component {
                         loadUser={this.loadUser}
                         getUserNotes={this.getUserNotes}
                         setLoadingTrue={this.setLoadingTrue}
+                        setLoadingFalse={this.setLoadingFalse}
                         loading={loading}/>
             </Loadable>
 

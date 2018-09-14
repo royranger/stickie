@@ -35,7 +35,7 @@ class Register extends Component {
   }
 
   onSubmitRegister = () => {
-    const {loadUser, routeBoard, setLoadingTrue} = this.props;
+    const {loadUser, routeBoard, setLoadingTrue, setLoadingFalse} = this.props;
     const {registerName, registerUsername, registerPassword} = this.state;
 
     setLoadingTrue();
@@ -56,8 +56,10 @@ class Register extends Component {
         routeBoard();
       } else if (data === 'fields empty') {
         window.alert('Please fill out all fields.');
+        setLoadingFalse();
       } else {
         window.alert('User already exists');
+        setLoadingFalse();
       }
     })
 
@@ -71,7 +73,7 @@ class Register extends Component {
 
 
   render() {
-    const {routeBoard, loadUser, getUserNotes, setLoadingTrue, loading} = this.props;
+    const {routeBoard, loadUser, getUserNotes, setLoadingTrue, setLoadingFalse, loading} = this.props;
 
     return(
       <div className="flex flex-wrap items-center" id="register">
@@ -101,7 +103,8 @@ class Register extends Component {
       <Signin routeBoard={routeBoard}
               loadUser={loadUser}
               getUserNotes={getUserNotes}
-              setLoadingTrue={setLoadingTrue}/>
+              setLoadingTrue={setLoadingTrue}
+              setLoadingFalse={setLoadingFalse}/>
     </Loadable>
 
   </Popup>

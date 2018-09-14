@@ -22,7 +22,7 @@ class Signin extends Component {
   }
 
   onSubmitSignin = () => {
-    const {loadUser, getUserNotes, routeBoard, setLoadingTrue} = this.props;
+    const {loadUser, getUserNotes, routeBoard, setLoadingTrue, setLoadingFalse} = this.props;
     const {signinUsername, signinPassword} = this.state;
 
     setLoadingTrue();
@@ -42,6 +42,7 @@ class Signin extends Component {
           getUserNotes(user.id);
           routeBoard();
         } else {
+          setLoadingFalse();
           window.alert('Your credentials are incorrect. Please try again.');
         }
       })
