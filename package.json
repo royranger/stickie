@@ -10,7 +10,7 @@
     "react-dom": "^16.4.2",
     "react-draggable": "^3.0.5",
     "react-loading-overlay": "^0.3.0",
-    "react-scripts": "1.1.5",
+    "react-scripts": "^2.1.2",
     "reactjs-popup": "^1.2.0",
     "tachyons": "^4.10.0"
   },
